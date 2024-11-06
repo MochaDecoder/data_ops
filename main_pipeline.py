@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO)
 
 # Specify your BigQuery project ID and dataset.table name
 # table_spec = "stately-gist-435602-u9:" "aekanun_workshop2.aekanun_dfsqltable_sales"
-table_spec = "graceful-mile-438103-u9:" "workshop2.mocha_dfsqltable_sales"
+table_spec = "graceful-mile-438103-u9:" "mocha.mocha_dfsqltable_sales"
 # Define the schema for your BigQuery table
 schema = (
     "tr_time_str:DATETIME, first_name:STRING, last_name:STRING, "
@@ -23,8 +23,8 @@ pipeline_args = [
     "--project=graceful-mile-438103-u9",  # Change to your GCP project ID
     "--runner=DataflowRunner",
     "--region=us-central1",  # Adjust as per your GCP region
-    "--staging_location=gs://workshop2/temp/staging/",  # Change to your bucket path
-    "--temp_location=gs://workshop2/temp",  # Change to your bucket path
+    "--staging_location=gs://mocha-ops/temp/staging/",  # Change to your bucket path
+    "--temp_location=gs://mocha-ops/temp",  # Change to your bucket path
     "--streaming",
     "--setup_file=./setup.py",  # Point to your setup file
 ]
