@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO)
 
 # Specify your BigQuery project ID and dataset.table name
 # table_spec = "stately-gist-435602-u9:" "aekanun_workshop2.aekanun_dfsqltable_sales"
-table_spec = "graceful-mile-438103-u9:" "mocha.mocha_dfsqltable_sales"
+table_spec = "graceful-mile-438103-u9:" "mocha_workshop2.mocha_dfsqltable_sales"
 # Define the schema for your BigQuery table
 schema = (
     "tr_time_str:DATETIME, first_name:STRING, last_name:STRING, "
@@ -22,9 +22,9 @@ schema = (
 pipeline_args = [
     "--project=graceful-mile-438103-u9",  # Change to your GCP project ID
     "--runner=DataflowRunner",
-    "--region=us-central1",  # Adjust as per your GCP region
-    "--staging_location=gs://mocha-ops/temp/staging/",  # Change to your bucket path
-    "--temp_location=gs://mocha-ops/temp",  # Change to your bucket path
+    "--region=us-east1",  # Adjust as per your GCP region
+    "--staging_location=gs://mocha_workshop2/temp/staging/",  # Change to your bucket path
+    "--temp_location=gs://mocha_workshop2/temp",  # Change to your bucket path
     "--streaming",
     "--setup_file=./setup.py",  # Point to your setup file
 ]
@@ -53,7 +53,7 @@ result.wait_until_finish()
 
 # Grabbing job ID and region info to save in a file
 job_id = result._job.id
-region = "us-central1"  # Adjust as per your GCP region
+region = "us-east1"  # Adjust as per your GCP region
 
 with open("job_info.txt", "w") as file:
     file.write(f"{job_id}\n{region}")
